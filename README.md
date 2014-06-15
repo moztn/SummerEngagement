@@ -41,4 +41,22 @@ Make sure you have `python2.7`, `pip` and `virtualenv`
 
   Then you can access it on : https://localhost:5000/
 
+REST API :
+==========
+
+v1:
+--
+
+|       Resource             |              Description                     |
+|----------------------------|----------------------------------------------|
+| `GET` api/mozillians       | Returns a collection of engaged mozillians.  |
+| `GET` api/mozillians/:id   | Returns a mozillian specified by `id`.       |
+| `GET` api/engagements/     | Returns a collection of engagements.         |
+| `GET` api/engagements/:id  | Returns an engagement specified by `id`.     |
+| `GET` api/checkins/        | Returns a collection of checkins.            |
+| `GET` api/checkins/:id     | Returns a checkin specified by `id`.         |
+
+
+
+
 
