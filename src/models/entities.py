@@ -8,7 +8,7 @@ class Checkin(SQLObject):
 
   def toDict(self):
     return {'duration':self.duration, 'note':self.note,\
-      'checkinDate':self.checkinDate, 'mozillian':self.mozillian}
+      'checkinDate':self.checkinDate.isoformat(), 'mozillian':self.mozillian.id}
 
 
 class Mozillian(SQLObject):
@@ -20,7 +20,7 @@ class Mozillian(SQLObject):
 
   def toDict(self):
     return {'nickname':self.nickname, 'email':self.email,\
-      'engagement':self.engagement,\
+      'engagement':self.engagementID,\
       'checkins':map(lambda c: c.toDict(), Checkin.selectBy(mozillian = self.id))}
 
 
@@ -32,4 +32,4 @@ class Engagement(SQLObject):
 
   def toDict(self):
     return {'numberOfDays':self.numberOfDays, 'numberOfHours':self.numberOfHours,\
-      'startingDay':self.startingDay}
+      'startingDay':self.startingDay.isoformat()}
