@@ -3,8 +3,44 @@ from models.database import *
 from models.entities import *
 from flask import Flask, url_for, render_template, session, escape, request,\
        redirect, jsonify, abort, make_response
+from flask.ext.login import LoginManager
+from flask.ext.browserid import BrowserID
+
+def get_user_by_id(aId):
+  try:
+    m = Mozillian.selectBy(id = aId).getOne()
+    return m
+  except SQLObjectNotFound:
+    return None
+
+def get_user(kwargs):
+  try:
+    m = Mozillian.selectBy(email= kwargs['email']).getOne()
+    return m
+  except SQLObjectNotFound:
+    return create_user(kwargs) # If a user is not registred, we create it ! # TODO : redirect to profile (/u/me) to complete registration (nickname, engagement ...)
+
+
+
+def create_user(kwargs):
+  print kwargs
+  if kwargs['status'] == 'okay':
+    m = Mozillian(nickname = None, engagement = None, email = kwargs['email'])
+    return m
+  else:
+    return None
 
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = "deterministic"
+
+login_manager = LoginManager()
+login_manager.user_loader(get_user_by_id)
+login_manager.init_app(app)
+
+browser_id = BrowserID()
+browser_id.user_loader(get_user)
+browser_id.init_app(app)
 
 
 @app.errorhandler(404)

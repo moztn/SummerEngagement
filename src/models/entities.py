@@ -11,7 +11,7 @@ class Checkin(SQLObject):
       'checkinDate':self.checkinDate.isoformat(), 'mozillian':self.mozillian.id}
 
 
-class Mozillian(SQLObject):
+class Mozillian(SQLObject, UserMixin):
 
   nickname = StringCol(unique=True)
   email = StringCol( unique = True)
@@ -22,7 +22,6 @@ class Mozillian(SQLObject):
     return {'nickname':self.nickname, 'email':self.email,\
       'engagement':self.engagementID,\
       'checkins':map(lambda c: c.toDict(), Checkin.selectBy(mozillian = self.id))}
-
 
 class Engagement(SQLObject):
 

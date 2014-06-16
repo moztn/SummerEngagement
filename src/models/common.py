@@ -2,3 +2,5 @@
 from sqlobject import SQLObject, ForeignKey, StringCol, IntCol, DateCol,\
      DateTimeCol, MultipleJoin, sqlhub, connectionForURI, SQLObjectNotFound
 
+from flask.ext.login import UserMixin
+
