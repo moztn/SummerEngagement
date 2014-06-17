@@ -18,17 +18,18 @@ def get_user(kwargs):
     m = Mozillian.selectBy(email= kwargs['email']).getOne()
     return m
   except SQLObjectNotFound:
-    return create_user(kwargs) # If a user is not registred, we create it ! # TODO : redirect to profile (/u/me) to complete registration (nickname, engagement ...)
+    return create_user(kwargs)
 
 
 
 def create_user(kwargs):
-  print kwargs
   if kwargs['status'] == 'okay':
     m = Mozillian(nickname = None, engagement = None, email = kwargs['email'])
     return m
   else:
     return None
+
+
 
 app = Flask(__name__)
 
@@ -40,6 +41,7 @@ login_manager.init_app(app)
 
 browser_id = BrowserID()
 browser_id.user_loader(get_user)
+browser_id.redirect_url = '/u/me'
 browser_id.init_app(app)
 
 
