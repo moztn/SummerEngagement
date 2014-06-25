@@ -1,9 +1,10 @@
 
 from models.database import *
 from models.entities import *
+from datetime import datetime
 from flask import Flask, url_for, render_template, session, escape, request,\
        redirect, jsonify, abort, make_response
-from flask.ext.login import LoginManager, login_required
+from flask.ext.login import LoginManager, login_required, current_user
 from flask.ext.browserid import BrowserID
 
 def get_user_by_id(aId):
@@ -95,6 +96,26 @@ def getEngagementById(engagement_id):
     return jsonify(Engagement.selectBy(id = engagement_id).getOne().toDict())
   except SQLObjectNotFound:
     return abort(404)
+
+
+@app.route('/api/engagements', methods = ['POST'])
+@login_required
+def createEngagement():
+  if not request.json or not ('numberOfDays' in request.json and\
+                               'numberOfHours' in request.json and\
+                               'startingDay' in request.json):
+    abort(400)
+
+  days = int(request.json['numberOfDays'])
+  hours = int(request.json['numberOfHours'])
+  start = request.json['startingDay']
+  startDate = datetime.strptime(start, '%Y/%m/%d')
+
+  eng = Engagement(numberOfDays = days, numberOfHours = hours, startingDay = startDate)
+
+  # We assigne the created engagement to the logged user.
+  current_user.engagement = eng.id
+  return jsonify(eng.toDict()), 201
 
 @app.route('/api/checkins', methods = ['GET'])
 def getCheckins():
