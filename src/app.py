@@ -106,10 +106,18 @@ def createEngagement():
                                'startingDay' in request.json):
     abort(400)
 
-  days = int(request.json['numberOfDays'])
-  hours = int(request.json['numberOfHours'])
-  start = request.json['startingDay']
-  startDate = datetime.strptime(start, '%Y/%m/%d')
+    days = None
+    hours = None
+    start = None
+    startDate = None
+  try:
+    days = int(request.json['numberOfDays'])
+    hours = int(request.json['numberOfHours'])
+    start = request.json['startingDay']
+
+    startDate = datetime.strptime(start, '%Y/%m/%d')
+  except ValueError:
+    abort(400)
 
   eng = Engagement(numberOfDays = days, numberOfHours = hours, startingDay = startDate)
 
