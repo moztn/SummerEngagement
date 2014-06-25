@@ -3,7 +3,7 @@ from models.database import *
 from models.entities import *
 from flask import Flask, url_for, render_template, session, escape, request,\
        redirect, jsonify, abort, make_response
-from flask.ext.login import LoginManager
+from flask.ext.login import LoginManager, login_required
 from flask.ext.browserid import BrowserID
 
 def get_user_by_id(aId):
@@ -65,6 +65,20 @@ def getMozillianById(mozillian_id):
   except SQLObjectNotFound:
     return abort(404)
 
+@app.route('/api/mozillians', methods = ['POST'])
+@login_required
+def create_mozillian():
+  if not request.json or not 'nickname' in request.json:
+    abort(400)
+
+  email = current_user.email
+  try:
+    m = Mozillian.selectBy(email = email).getOne()
+    m.nickname = request.json['nickname']
+    return jsonify(m.toDict()), 201
+  except SQLObjectNotFound:
+    return abort(400)
+
 
 @app.route('/api/engagements', methods = ['GET'])
 def getEngagements():
@@ -103,6 +117,10 @@ def getCheckinById(checkin_id):
 def home():
   return 'Hello World'
 
+# example of login with persona, will be deleted when UI later.
+@app.route('/login')
+def logg():
+  return render_template('login.html')
 if __name__ == '__main__':
   app.run(debug = True, host = '0.0.0.0')
 

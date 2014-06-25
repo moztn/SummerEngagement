@@ -47,14 +47,15 @@ REST API :
 v1:
 --
 
-|       Resource             |              Description                     |
-|----------------------------|----------------------------------------------|
-| `GET` api/mozillians       | Returns a collection of engaged mozillians.  |
-| `GET` api/mozillians/:id   | Returns a mozillian specified by `id`.       |
-| `GET` api/engagements/     | Returns a collection of engagements.         |
-| `GET` api/engagements/:id  | Returns an engagement specified by `id`.     |
-| `GET` api/checkins/        | Returns a collection of checkins.            |
-| `GET` api/checkins/:id     | Returns a checkin specified by `id`.         |
+|       Resource             |              Description                     | Authenficiation |
+|----------------------------|----------------------------------------------|-----------------|
+| `GET` api/mozillians       | Returns a collection of engaged mozillians.  |  Not Required   |
+| `GET` api/mozillians/:id   | Returns a mozillian specified by `id`.       |  Not Required   |
+| `POST` api/mozillians      | Will create a mozillian.                     |    Required     |
+| `GET` api/engagements/     | Returns a collection of engagements.         |  Not Required   |
+| `GET` api/engagements/:id  | Returns an engagement specified by `id`.     |  Not Required   |
+| `GET` api/checkins/        | Returns a collection of checkins.            |  Not Required   |
+| `GET` api/checkins/:id     | Returns a checkin specified by `id`.         |  Not Required   |
 
 
 
