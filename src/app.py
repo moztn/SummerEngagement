@@ -141,6 +141,27 @@ def getCheckinById(checkin_id):
   except SQLObjectNotFound:
     return abort(404)
 
+@app.route('/api/checkins', methods = ['POST'])
+#@login_required
+def checkin():
+  if not request.json or not 'duration' in request.json:
+    abort(400)
+
+
+  duration = None
+  note = None
+  if('note' in request.json):
+    note = request.json['note']
+
+  try:
+    duration = int(request.json['duration'])
+  except ValueError:
+    abort(400)
+
+  checkin = Checkin(duration = duration, note = note,\
+        checkinDate = datetime.now(), mozillian = current_user.id)
+
+  return checkin.toDict(), 201
 
 @app.route('/')
 def home():

@@ -57,7 +57,7 @@ v1:
 | `POST` api/engagements     | Will create and assign engagement to user.   |    Required     |
 | `GET` api/checkins         | Returns a collection of checkins.            |  Not Required   |
 | `GET` api/checkins/:id     | Returns a checkin specified by `id`.         |  Not Required   |
-
+| `POST` api/checkins        | Create a checkin.                            |    Required     |
 
 
 
