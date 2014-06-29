@@ -165,7 +165,8 @@ def checkin():
 
 @app.route('/')
 def home():
-  return 'Hello World'
+  #return 'Hello World'
+  return render_template('index.html')
 
 # example of login with persona, will be deleted when UI later.
 @app.route('/login')
