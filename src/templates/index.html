@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mozilla Tunisia - Summer Engagement</title>
+
+    <!-- Core CSS - Include with every page -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+
+    <link href="{{ url_for('static', filename='css/plugins/dataTables/dataTables.bootstrap.css')}}" rel="stylesheet">
+
+    <!-- SB Admin CSS - Include with every page -->
+    <link href="{{ url_for('static', filename='css/main.css')}}" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">MozTn Summer Engagement</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                                </div>
+                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                                </div>
+                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                                </div>
+                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>Read All Messages</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-messages -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Task 1</strong>
+                                        <span class="pull-right text-muted">40% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Task 2</strong>
+                                        <span class="pull-right text-muted">20% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                            <span class="sr-only">20% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Task 3</strong>
+                                        <span class="pull-right text-muted">60% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                            <span class="sr-only">60% Complete (warning)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Task 4</strong>
+                                        <span class="pull-right text-muted">80% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                            <span class="sr-only">80% Complete (danger)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Tasks</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-tasks -->
+                </li>
+                <!-- /.dropdown -->
+                
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default navbar-static-side" role="navigation">
+                <div class="sidebar-collapse centered">                    
+                    <div class="panel panel-primary">
+                        <div class="panel-heading"><i class="fa fa-star fa-fw"></i> TOP 3 last month</div>
+                            <ul class="todo">
+
+                              <li>
+                                
+                                <div class="todo-content">
+                                    <div class="user_avatar_top"></div>
+                                  <h4 class="todo-name">
+                                    Rednaks
+                                  </h4>
+                                  7 hours
+                                </div>
+                              </li>
+
+                              <li>
+                                
+                                <div class="todo-content">
+                                    <div class="user_avatar_top"></div>
+                                  <h4 class="todo-name">
+                                    Mack
+                                  </h4>
+                                  6 hours
+                                </div>
+                              </li>
+
+                              <li>
+                                
+                                <div class="todo-content">
+                                    <div class="user_avatar_top"></div>
+                                  <h4 class="todo-name">
+                                    Chaasof
+                                  </h4>
+                                  5 hours
+                                </div>
+                              </li>
+                              
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- /#side-menu -->
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Track Mozillians' Progress</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-check-square-o fa-fw"></i> Check-in
+                            <div class="pull-right">
+                                
+                                    <a id="modal-566656" href="#modal-container-566656" role="button" class="btn btn-success btn-xs" data-toggle="modal"><i class="fa fa-plus fa-fw"></i>Add</a>
+                                    
+                            
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <!-- <div id="morris-area-chart"></div> -->
+                            <ul class="nav nav-pills">
+                                <li class="active"><a href="#home-pills" data-toggle="tab"><i class="fa fa-th-list fa-fw"></i> List</a>
+                                </li>
+                                <li><a href="#profile-pills" data-toggle="tab"><i class="fa fa-table fa-fw"></i> Table</a>
+                                </li>                                
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="home-pills">
+                                    <!-- User Progress Element -->
+                                    <div class="col-xs-5" style="border-bottom:1px solid #ebedef;margin-right: 15px;">
+                                        <div class="row el_row">
+                                            <div class="user_avatar"></div>
+                                            <h3 class="user_name">Mack<span class="duration">12 hours</span></h3>
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-info" style="width: 80%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End User Progress Element -->
+
+
+                                    <!-- User Progress Element -->
+                                    <div class="col-xs-5" style="border-bottom:1px solid #ebedef;margin-right: 15px;">
+                                        <div class="row el_row">
+                                            <div class="user_avatar"></div>
+                                            <h3 class="user_name">Rednaks<span class="duration">12 hours</span></h3>
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-info" style="width: 90%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End User Progress Element -->
+
+                                    <!-- User Progress Element -->
+                                    <div class="col-xs-5" style="border-bottom:1px solid #ebedef;margin-right: 15px;">
+                                        <div class="row el_row">
+                                            <div class="user_avatar"></div>
+                                            <h3 class="user_name">Chaasof<span class="duration">12 hours</span></h3>
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-info" style="width: 40%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End User Progress Element -->
+
+                                    <!-- User Progress Element -->
+                                    <div class="col-xs-5" style="border-bottom:1px solid #ebedef;margin-right: 15px;">
+                                        <div class="row el_row">
+                                            <div class="user_avatar"></div>
+                                            <h3 class="user_name">Melek<span class="duration">12 hours</span></h3>
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-info" style="width: 50%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End User Progress Element -->
+
+                                    <!-- User Progress Element -->
+                                    <div class="col-xs-5" style="border-bottom:1px solid #ebedef;margin-right: 15px;">
+                                        <div class="row el_row">
+                                            <div class="user_avatar"></div>
+                                            <h3 class="user_name">MedFiras<span class="duration">12 hours</span></h3>
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-info" style="width: 2%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End User Progress Element -->
+                                </div>
+                                <div class="tab-pane fade" id="profile-pills">
+                                    <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Checkin</th>
+                                            <th>Duration</th>
+                                            <th>Date</th>
+                                            <th>Mozillian</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="odd gradeX">
+                                            <td>1</td>
+                                            <td>Checkin 1</td>
+                                            <td>5h</td>
+                                            <td class="center">27/06/2014</td>
+                                            <td class="center">Moz1</td>
+                                        </tr>
+                                        <tr class="even gradeC">
+                                            <td>2</td>
+                                            <td>Checkin 2</td>
+                                            <td>6h</td>
+                                            <td class="center">27/06/2014</td>
+                                            <td class="center">Moz2</td>
+                                        </tr>
+                                        <tr class="odd gradeA">
+                                            <td>3</td>
+                                            <td>Checkin 3</td>
+                                            <td>7h</td>
+                                            <td class="center">27/06/2014</td>
+                                            <td class="center">Moz1</td>
+                                        </tr>
+                                        <tr class="even gradeA">
+                                            <td>4</td>
+                                            <td>Checkin 4</td>
+                                            <td>4h</td>
+                                            <td class="center">27/06/2014</td>
+                                            <td class="center">Moz3</td>
+                                        </tr>
+                                        <tr class="odd gradeA">
+                                            <td>5</td>
+                                            <td>Checkin 5</td>
+                                            <td>3h</td>
+                                            <td class="center">27/06/2014</td>
+                                            <td class="center">Moz14</td>
+                                        </tr>
+                                        <tr class="even gradeA">
+                                            <td>6</td>
+                                            <td>Checkin 6</td>
+                                            <td>2h</td>
+                                            <td class="center">27/06/2014</td>
+                                            <td class="center">Moz5</td>
+                                        </tr>
+                                        <tr class="gradeA">
+                                            <td>7</td>
+                                            <td>Checkin 7</td>
+                                            <td>6h</td>
+                                            <td class="center">27/06/2014</td>
+                                            <td class="center">Moz1</td>
+                                        </tr>
+                                        <tr class="gradeA">
+                                            <td>8</td>
+                                            <td>Checkin 8</td>
+                                            <td>2h</td>
+                                            <td class="center">27/06/2014</td>
+                                            <td class="center">Moz2</td>
+                                        </tr>
+                                        <tr class="gradeA">
+                                            <td>9</td>
+                                            <td>Checkin 9</td>
+                                            <td>1h</td>
+                                            <td class="center">27/06/2014</td>
+                                            <td class="center">Moz6</td>
+                                        </tr>
+                                        <tr class="gradeA">
+                                            <td>10</td>
+                                            <td>Checkin 10</td>
+                                            <td>0.5h</td>
+                                            <td class="center">27/06/2014</td>
+                                            <td class="center">Moz17</td>
+                                        </tr>
+                                        <tr class="gradeA">
+                                            <td>11</td>
+                                            <td>Checkin 11</td>
+                                            <td>1.5h</td>
+                                            <td class="center">27/06/2014</td>
+                                            <td class="center">Moz1</td>
+                                        </tr>
+                                        <tr class="gradeA">
+                                            <td>12</td>
+                                            <td>Checkin 12</td>
+                                            <td>3h</td>
+                                            <td class="center">27/06/2014</td>
+                                            <td class="center">Moz1</td>
+                                        </tr>
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    
+                    
+                </div>
+                <!-- /.col-lg-8 -->
+                
+            </div>
+           
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <div class="modal fade" id="modal-container-566656" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            Add new checkin
+                        </h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">Duration : </span>
+                            <input class="form-control" type="text" placeholder="Duration for this checkin (ex : 1h, 2h ...)">
+                        </div>
+                        <div class="form-group input-group">
+                            <span  style="width: 90px;" class="input-group-addon">Note     : </span>
+                            <input style="width: 470px;" class="form-control" type="text" placeholder="Small description ...">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+                                
+        </div>
+    </div>
+                        
+                 
+
+    <!-- Core Scripts - Include with every page -->
+    <script src="{{ url_for('static', filename='js/jquery-1.10.2.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
+
+    <!-- Page-Level Plugin Scripts - Tables -->
+    <script src="{{ url_for('static', filename='js/plugins/dataTables/jquery.dataTables.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/plugins/dataTables/dataTables.bootstrap.js')}}"></script>
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="{{ url_for('static', filename='js/main.js')}}"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').dataTable();
+    });
+    </script>
+
+</body>
+
+</html>
