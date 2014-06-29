@@ -1,3 +1,4 @@
 Flask
+Flask-cors
 sqlobject
 git+https://github.com/rednaks/flask-browserid

@@ -6,6 +6,7 @@ from flask import Flask, url_for, render_template, session, escape, request,\
        redirect, jsonify, abort, make_response
 from flask.ext.login import LoginManager, login_required, current_user
 from flask.ext.browserid import BrowserID
+from flask.ext.cors import cross_origin
 
 def get_user_by_id(aId):
   try:
@@ -51,6 +52,7 @@ def not_found(error):
   return make_response(jsonify({'error':'Not found'}), 404)
 
 @app.route('/api/mozillians', methods = ['GET'])
+@cross_origin(headers=['Content-Type'])
 def getMozillians():
   moz = map(lambda em: em.toDict(), Mozillian.select())
 
@@ -60,6 +62,7 @@ def getMozillians():
   return jsonify({'mozillians':moz})
 
 @app.route('/api/mozillians/<int:mozillian_id>', methods = ['GET'])
+@cross_origin(headers=['Content-Type'])
 def getMozillianById(mozillian_id):
   try:
     return jsonify(Mozillian.selectBy(id = mozillian_id).getOne().toDict())
@@ -68,6 +71,7 @@ def getMozillianById(mozillian_id):
 
 @app.route('/api/mozillians', methods = ['POST'])
 @login_required
+@cross_origin(headers=['Content-Type'])
 def create_mozillian():
   if not request.json or not 'nickname' in request.json:
     abort(400)
@@ -82,6 +86,7 @@ def create_mozillian():
 
 
 @app.route('/api/engagements', methods = ['GET'])
+@cross_origin(headers=['Content-Type'])
 def getEngagements():
   engagements = map(lambda e: e.toDict(), Engagement.select())
   
@@ -91,6 +96,7 @@ def getEngagements():
   return jsonify({'engagements':map(lambda e: e.toDict(), Engagement.select())})
 
 @app.route('/api/engagements/<int:engagement_id>', methods = ['GET'])
+@cross_origin(headers=['Content-Type'])
 def getEngagementById(engagement_id):
   try:
     return jsonify(Engagement.selectBy(id = engagement_id).getOne().toDict())
@@ -99,6 +105,7 @@ def getEngagementById(engagement_id):
 
 
 @app.route('/api/engagements', methods = ['POST'])
+@cross_origin(headers=['Content-Type'])
 @login_required
 def createEngagement():
   if not request.json or not ('numberOfDays' in request.json and\
@@ -126,6 +133,7 @@ def createEngagement():
   return jsonify(eng.toDict()), 201
 
 @app.route('/api/checkins', methods = ['GET'])
+@cross_origin(headers=['Content-Type'])
 def getCheckins():
   checkins = map(lambda c: c.toDict(), Checkin.select())
 
@@ -135,6 +143,7 @@ def getCheckins():
   return jsonify({'checkins':map(lambda c: c.toDict(), Checkin.select())})
 
 @app.route('/api/checkins/<int:checkin_id>', methods = ['GET'])
+@cross_origin(headers=['Content-Type'])
 def getCheckinById(checkin_id):
   try:
     return jsonify(Checkin.selectBy(id = checkin_id).getOne().toDict())
@@ -143,6 +152,7 @@ def getCheckinById(checkin_id):
 
 @app.route('/api/checkins', methods = ['POST'])
 #@login_required
+@cross_origin(headers=['Content-Type'])
 def checkin():
   if not request.json or not 'duration' in request.json:
     abort(400)
