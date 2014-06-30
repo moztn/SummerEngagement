@@ -1,5 +1,108 @@
 {% extends "layout.html" %}
 {% block body %}
+        <script type="application/javascript">
+
+          function generateInnerForMozillian(aMozillian) {
+            var inner = '<div class="col-xs-5" style="border-bottom:1px solid #ebedef;margin-right: 15px;">';
+            inner += '<div class="row el_row">';
+            inner += '<div class="user_avatar"></div>';
+            inner += '<h3 class="user_name">' + aMozillian.nickname + '<span class="duration">'+aMozillian.duration+' hours</span></h3>';
+            inner += '<div class="progress">';
+            inner += '<div class="progress-bar progress-bar-info" style="width: '+aMozillian.getProgress()+'%;"></div>';
+            inner +=   '</div>';
+            inner +=   '</div>';
+            inner +=   '</div>';
+
+            return inner;
+          }
+
+          function generateInnerForCheckin(aCheckin) {
+              var inner = '<tr class="gradeA">';
+                  inner += '<td>'+aCheckin.id+'</td>';
+                  inner += '<td>Checkin 12</td>';
+                  inner += '<td>'+aCheckin.duration +'h</td>';
+                  inner += '<td class="center">'+aCheckin.datetime.toString()+'</td>';
+                  inner += '<td class="center">Moz1</td>';
+                  inner += '</tr>';
+
+              return inner;
+          }
+
+          function getMozillians() {
+            var requestURL = 'http://' + document.domain + ':5000/api/mozillians';
+            var mozillianContainer = document.getElementById('home-pills');
+
+              $.ajax({
+                  type: 'GET',
+                  url: requestURL,
+                  async: true,
+                  contentType: "application/json",
+                  success: function(json) {
+
+                    for(var i in json.mozillians){
+                      var mozillian = createMozillian(json.mozillians[i]);
+
+                      mozillian.engagement = getEngagement(json.mozillians[i].engagement);
+                      mozillianContainer.innerHTML += generateInnerForMozillian(mozillian);
+                    }
+                  },
+                  error: function(e) {
+                  console.log(e.message);
+                  }
+              });
+
+          }
+
+          function getEngagement(aID){
+              var requestURL = 'http://'+ document.domain + ':5000/api/engagements/'+aID;
+              var engagement = null;
+
+              $.ajax({
+                  type: 'GET',
+                  url: requestURL,
+                  async: false,  // because getMozillians depends on it.
+                  contentType: "application/json",
+                  success: function(json) {
+                    engagement = createEngagement(json);
+                  },
+                  error: function(e) {
+                  console.log(e.message);
+                  }
+              });
+
+              return engagement;
+          }
+
+
+          function getCheckins() {
+            var requestURL = 'http://'+ document.domain + ':5000/api/checkins';
+            var checkinContainer = document.getElementById('checkinsContainer');
+
+            $.ajax({
+              type: 'GET',
+              url: requestURL,
+              async: true,
+              contentType: "application/json",
+              success: function(json) {
+                for(var i in json.checkins) {
+                  var checkin = createCheckin(json.checkins[i]);
+                  checkinContainer.innerHTML += generateInnerForCheckin(checkin);
+                }
+              },
+              error: function(e) {
+                console.log(e.message);
+              }
+            });
+          }
+
+         window.addEventListener('load', function () {
+              getMozillians();
+              getCheckins();
+
+         });
+        </script>
+
+
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -45,14 +148,7 @@
                                             <th>Mozillian</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                       <tr class="gradeA">
-                                            <td>12</td>
-                                            <td>Checkin 12</td>
-                                            <td>3h</td>
-                                            <td class="center">27/06/2014</td>
-                                            <td class="center">Moz1</td>
-                                        </tr>
+                                    <tbody id="checkinsContainer">
                                     </tbody>
                                 </table>
                             </div>
