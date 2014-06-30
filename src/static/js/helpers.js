@@ -43,7 +43,7 @@ function createCheckin(aRawCheckin) {
   var struct = {
     id: aRawCheckin.id,
     duration: aRawCheckin.duration,
-    datetime: new Date(aRawCheckin),
+    datetime: new Date(aRawCheckin.checkinDate),
     note: aRawCheckin.note
   }
 
