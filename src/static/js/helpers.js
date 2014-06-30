@@ -56,7 +56,7 @@ function createEngagement(aRawEngagement){
     numberOfDays : aRawEngagement.numberOfDays,
     startingDay: aRawEngagement.startingDay,
     getTotalDuration: function() {
-      return numberOfDays * numberOfHours;
+      return this.numberOfDays * this.numberOfHours;
     }
   }
 
