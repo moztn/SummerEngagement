@@ -178,10 +178,6 @@ def home():
   #return 'Hello World'
   return render_template('index.html')
 
-# example of login with persona, will be deleted when UI later.
-@app.route('/login')
-def logg():
-  return render_template('login.html')
 if __name__ == '__main__':
   app.run(debug = True, host = '0.0.0.0')
 
