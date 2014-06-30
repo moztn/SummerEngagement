@@ -7,7 +7,7 @@ class Checkin(SQLObject):
   mozillian = ForeignKey('Mozillian')
 
   def toDict(self):
-    return {'duration':self.duration, 'note':self.note,\
+    return {'id':self.id, 'duration':self.duration, 'note':self.note,\
       'checkinDate':self.checkinDate.isoformat(), 'mozillian':self.mozillian.id}
 
 
@@ -19,7 +19,7 @@ class Mozillian(SQLObject, UserMixin):
   checkins = MultipleJoin('Checkin')
 
   def toDict(self):
-    return {'nickname':self.nickname, 'email':self.email,\
+    return { 'id':self.id, 'nickname':self.nickname, 'email':self.email,\
       'engagement':self.engagementID,\
       'checkins':map(lambda c: c.toDict(), Checkin.selectBy(mozillian = self.id))}
 
