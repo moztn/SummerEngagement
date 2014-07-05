@@ -77,6 +77,9 @@ def create_mozillian():
     abort(400)
 
   email = current_user.email
+  if request.json['nickname'] == 'me':
+    abort(403) # me is not allowed as a user name, sorry :D!
+
   try:
     m = Mozillian.selectBy(email = email).getOne()
     m.nickname = request.json['nickname']
@@ -177,6 +180,20 @@ def checkin():
 def home():
   #return 'Hello World'
   return render_template('index.html')
+
+@app.route('/u/<string:aUserNickname>')
+def profile(aUserNickname):
+
+  if aUserNickname == 'me':
+    # We will need |me = True| to check authentication.
+    return render_template('profile.html', user = current_user, me = True)
+
+  try:
+    user = Mozillian.selectBy(nickname = aUserNickname).getOne()
+    return render_template('profile.html', user = user, me = False)
+  except SQLObjectNotFound:
+    return render_template('profile.html', user = None, me = False)
+
 
 if __name__ == '__main__':
   app.run(debug = True, host = '0.0.0.0')
