@@ -7,13 +7,44 @@
                 <div class="col-lg-12">
 {% if me and not user.is_authenticated() %}
                     <!-- TODO #0: Add style here -->
-                    <!-- TODO #1: Check registration step2 
-                        If the nickname is not defined,
-                        We display a form to complete registration.
-                    -->
-                    <h4>
+                   <h4>
                       <span><strong>Ooops :s </strong> You must login ! </span>
                     </h4>
+{% elif user.is_authenticated() and not user.nickname %}
+                  <script type="application/javascript">
+                      function register() {
+                        var requestURL = 'http://' + document.domain + ':5000/api/mozillians';
+                        var aNickname = document.getElementById('nickname').value;
+
+                        var myData = {nickname: aNickname};
+
+                        console.log("Register ... "+nickname);
+                        $.ajax({
+                          type: 'POST',
+                          url: requestURL,
+                          async: false,
+                          contentType: "application/json",
+                          data: JSON.stringify(myData),
+                          success: function(json) {
+                            // TODO: refresh the page maybe.
+                            console.log(json);
+                          },
+                          error: function(e) {
+                            // TODO
+                            console.log(e);
+                          }
+                        });
+                      }
+                  </script>
+                  <!-- TODO #3 : Add style :) -->
+                  <h4>
+                    <strong>Registration step 2 :</strong>
+                  </h4>
+                  <br/>Please set your nickname to complete the registration.<br/>
+                  <form action=# onsubmit="register();">
+                    <label>Nickname</label> <input type="text" id="nickname" required/>
+                    <input type="submit" value="Finish Him !">
+                  </form>
 {% elif not user %}
                     <!-- TODO #2: Add style here -->
                     <h4>
