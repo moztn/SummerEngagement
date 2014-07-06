@@ -10,7 +10,7 @@
                    <h4>
                       <span><strong>Ooops :s </strong> You must login ! </span>
                     </h4>
-{% elif user.is_authenticated() and not user.nickname %}
+{% elif me and user.is_authenticated() and not user.nickname %}
                   <script type="application/javascript">
                       function register() {
                         var requestURL = 'http://' + document.domain + ':5000/api/mozillians';
