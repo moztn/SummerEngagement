@@ -258,26 +258,23 @@
                         </h4>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="#" onsubmit="Checkin();">
                         <div class="form-group input-group">
                             <span class="input-group-addon">Duration : </span>
-                            <input class="form-control" type="text" placeholder="Duration for this checkin (ex : 1h, 2h ...)">
+                            <input class="form-control" type="number" placeholder="Duration for this checkin (ex : 1h, 2h ...)" required>
                         </div>
                         <div class="form-group input-group">
                             <span  style="width: 90px;" class="input-group-addon">Note     : </span>
                             <input style="width: 470px;" class="form-control" type="text" placeholder="Small description ...">
                         </div>
+                        </div>
+                        <div class="modal-footer">
+                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <input type="submit" value="Checkin !" class="btn btn-primary"/>
+                        </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
             </div>
-                                
         </div>
     </div>
-                        
-                 
 
     <!-- Core Scripts - Include with every page -->
     <script src="{{ url_for('static', filename='js/jquery-1.10.2.js')}}"></script>
