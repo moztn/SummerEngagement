@@ -26,8 +26,7 @@
                           contentType: "application/json",
                           data: JSON.stringify(myData),
                           success: function(json) {
-                            // TODO: refresh the page maybe.
-                            console.log(json);
+                            location.reload();
                           },
                           error: function(e) {
                             // TODO
